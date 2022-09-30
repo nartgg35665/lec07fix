@@ -1,0 +1,42 @@
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      border-color: blueviolet;
+    }
+    th, td {
+      padding: 15px;
+    }
+  </style>
+  <%= @temp %>
+
+    <table>
+      <tr>
+        <th></th>
+        <th>Subject</th>
+        <th>Score</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% i = 1 %>
+      <% for data in @db %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= data.subject %></td>
+          <td><%= data.point %></td>
+          <%= form_with url:edit_score_path(data.id), data: {turbo:false}, method: :get do |form| %>
+          <td><%= form.submit "edit", name:"edit#{i}" %></td>
+          <%end%>
+           <%= form_with url:score_path(data.id), data: {turbo:false}, method: "delete" do |form| %>
+          <td><%= form.submit "delete", name:"delete#{i}" %></td>
+          <%end%>
+          <% i+=1 %>
+        </tr>
+      <% end %>
+    </table>
+    Average = <%= @avg %>
+    <br>
+    Max subject is <%= @mxsub %>
+    <%= form_with url:new_score_path, data: {turbo:false}, method: :get do |form| %>
+          <%= form.submit "new score" %>
+      <%end%>
