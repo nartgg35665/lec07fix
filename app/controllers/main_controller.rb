@@ -3,10 +3,16 @@ class MainController < ApplicationController
   end
 
   def create
-    if params[:login]=='somchai'
-      
+    u=User.where(login: params[:login]).first
+    if u&&u.authenticate(params[:password])
+      redirect_to students_path
+      session[:logged_in]=true
+    else
+      redirect_to main_login_path
+    end
   end
 
   def destroy
+    reset_session
   end
 end

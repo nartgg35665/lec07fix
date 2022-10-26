@@ -1,4 +1,4 @@
-  <style>
+<!--   <style>
     table, th, td {
       border: 1px solid black;
       border-collapse: collapse;
@@ -7,29 +7,33 @@
     th, td {
       padding: 15px;
     }
-  </style>
+  </style> -->
   <%= @temp %>
 
-    <table>
-      <tr>
-        <th></th>
-        <th>Subject</th>
-        <th>Score</th>
-        <th></th>
-        <th></th>
-      </tr>
+    <table class="table">
+      <tr class="table-primary">
+        <th ></th>
+        <th >Subject</th>
+        <th >Score</th>
+        <%if session[:logged_in]%>
+        <th ></th>
+        <th ></th>
+        <% end %>
+      </tr >
       <% i = 1 %>
       <% for data in @db %>
-        <tr>
-          <td><%= i %></td>
-          <td><%= data.subject %></td>
-          <td><%= data.point %></td>
-          <%= form_with url:edit_score_path(data.id), data: {turbo:false}, method: :get do |form| %>
-          <td><%= form.submit "edit", name:"edit#{i}" %></td>
+        <tr class="table-info">
+          <td ><%= i %></td>
+          <td ><%= data.subject %></td>
+          <td ><%= data.point %></td>
+           <%if session[:logged_in]%>
+      <%= form_with url:edit_score_path(data.id), data: {turbo:false}, method: :get do |form| %>
+          <td ><%= form.submit "edit", name:"edit#{i}",class: "btn btn-secondary" %></td>
           <%end%>
            <%= form_with url:score_path(data.id), data: {turbo:false}, method: "delete" do |form| %>
-          <td><%= form.submit "delete", name:"delete#{i}" %></td>
+          <td ><%= form.submit "delete", name:"delete#{i}" ,class: "btn btn-secondary"%></td>
           <%end%>
+        <%end%>
           <% i+=1 %>
         </tr>
       <% end %>
@@ -38,5 +42,7 @@
     <br>
     Max subject is <%= @mxsub %>
     <%= form_with url:new_score_path, data: {turbo:false}, method: :get do |form| %>
-          <%= form.submit "new score" %>
+    <%if session[:logged_in]%>
+      <%= form.submit "new score" ,class: "btn btn-secondary"%>
+  <%end%>
       <%end%>

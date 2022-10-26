@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  # before_action :must_be_logged_in
   before_action :set_student, only: %i[ show edit update destroy ]
 
   # GET /students or /students.json
@@ -8,21 +9,24 @@ class StudentsController < ApplicationController
 
   # GET /students/1 or /students/1.json
   def show
+    must_be_logged_in
   end
 
   # GET /students/new
   def new
+    must_be_logged_in
     @student = Student.new
   end
 
   # GET /students/1/edit
   def edit
+    must_be_logged_in
   end
 
   # POST /students or /students.json
   def create
+    must_be_logged_in
     @student = Student.new(student_params)
-
     respond_to do |format|
       if @student.save
         format.html { redirect_to student_url(@student), notice: "Student was successfully created." }
@@ -36,6 +40,7 @@ class StudentsController < ApplicationController
 
   # PATCH/PUT /students/1 or /students/1.json
   def update
+    must_be_logged_in
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to student_url(@student), notice: "Student was successfully updated." }
@@ -49,6 +54,7 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1 or /students/1.json
   def destroy
+    must_be_logged_in
     @student.destroy
 
     respond_to do |format|
@@ -70,7 +76,11 @@ class StudentsController < ApplicationController
           @mxsub = score.subject
         end
       end
+      if cnt==0
+        @avg=0
+      else
       @avg = sum/cnt
+      end
       @db = Score.where(student: @student)
     end
 

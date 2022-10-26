@@ -12,26 +12,26 @@
   <% end %>
 
   <div>
-    <%= form.label :student_id, style: "display: block" %>
-    <%= form.text_field :student_id %>
+    <%= form.label :student_id, style: "display: block" ,class: "form-label"%>
+    <%= form.text_field :student_id ,class: "form-control"%>
   </div>
 
   <div>
-    <%= form.label :subject, style: "display: block" %>
-    <%= form.text_field :subject %>
+    <%= form.label :subject, style: "display: block" ,class: "form-label"%>
+    <%= form.text_field :subject ,class: "form-control"%>
   </div>
 
   <div>
-    <%= form.label :point, style: "display: block" %>
-    <%= form.number_field :point %>
+    <%= form.label :point, style: "display: block" ,class: "form-label"%>
+    <%= form.number_field :point ,class: "form-control"%>
   </div>
 
   <div>
-    <%= form.label :grade, style: "display: block" %>
-    <%= form.text_field :grade %>
+    <%= form.label :grade, style: "display: block" ,class: "form-label"%>
+    <%= form.text_field :grade ,class: "form-control"%>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "mr-1 mt-2 col-5 btn btn-secondary"%>
   </div>
 <% end %>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :students
   resources :users
   get 'main/login'
-  get 'main/create'
+ post 'main/create'
   get 'main/destroy'
   get 'students/:id/edit_score',to:'students#edit_score'
   # post 'studemt/:'

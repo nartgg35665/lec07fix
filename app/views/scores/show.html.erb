@@ -3,8 +3,8 @@
 <%= render @score %>
 
 <div>
-  <%= link_to "Edit this score", edit_score_path(@score) %> |
-  <%= link_to "Back to scores", scores_path %>
+  <%= link_to "Edit this score", edit_score_path(@score) ,class: "mr-1 col-5 btn btn-secondary "%> 
+  <%= link_to "Back to scores", scores_path ,class: "col-5 btn btn-secondary"%>
 
-  <%= button_to "Destroy this score", @score, method: :delete %>
+  <%= button_to "Destroy this score", @score, method: :delete ,class: "mt-1 col-5 btn btn-secondary"%>
 </div>

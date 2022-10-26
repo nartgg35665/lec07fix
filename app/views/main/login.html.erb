@@ -1,2 +1,11 @@
-<h1>Main#login</h1>
-<p>Find me in app/views/main/login.html.erb</p>
+<%="Main#login"%>
+<%= form_with url: main_create_path,data: {turbo: false} do |form| %>
+  <%= form.label :login, class: "form-label"%>
+  <%=form.text_field :login, class: "form-control"%>
+   <br/>
+  <%= form.label :password, class: "form-label"%>
+  <%=form.password_field :password , class: "form-control"%>
+ <br/>
+ 
+  <%=form.submit :OK,class: "btn btn-secondary"%>
+<% end %>

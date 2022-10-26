@@ -12,6 +12,21 @@
   <% end %>
 
   <div>
+    <%= form.label :login, style: "display: block" %>
+    <%= form.text_field :login %>
+  </div>
+
+  <div>
+    <%= form.label :full_name, style: "display: block" %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div>
+    <%= form.label :admin, style: "display: block" %>
+    <%= form.check_box :admin %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

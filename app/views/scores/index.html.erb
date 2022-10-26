@@ -6,9 +6,9 @@
   <% @scores.each do |score| %>
     <%= render score %>
     <p>
-      <%= link_to "Show this score", score %>
+      <%= link_to "Show this score", score ,class: "btn btn-secondary"%>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New score", new_score_path %>
+<%= link_to "New score", new_score_path ,class: "btn btn-secondary"%>

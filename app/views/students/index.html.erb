@@ -6,9 +6,13 @@
   <% @students.each do |student| %>
     <%= render student %>
     <p>
-      <%= link_to "Show this student", student %>
+      <%if session[:logged_in]%>
+      <%= link_to "Show this student", student ,class: "btn btn-secondary"%>
+      <%end%>
     </p>
   <% end %>
 </div>
+<%if session[:logged_in]%>
+      <%= link_to "New student", new_student_path,class: "btn btn-secondary" %>
+  <%end%>
 
-<%= link_to "New student", new_student_path %>
